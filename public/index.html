@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Multiplayer Checkers</title>
+
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=cabinet-grotesk@500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="page">
+    <aside class="panel">
+      <div class="logo">
+        <svg viewBox="0 0 64 64" fill="none" aria-label="Checkers logo">
+          <rect x="8" y="8" width="48" height="48" rx="14" stroke="currentColor" stroke-width="4"></rect>
+          <circle cx="24" cy="24" r="7" fill="currentColor"></circle>
+          <circle cx="40" cy="40" r="7" fill="currentColor" opacity="0.55"></circle>
+        </svg>
+
+        <div class="logo-text">
+          <h1>Checkers</h1>
+          <p>Real-time multiplayer match</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Room</h3>
+        <div class="stat"><strong>ID:</strong> <span id="roomName">Loading...</span></div>
+        <div class="stat"><strong>Your Color:</strong> <span id="myColor">Loading...</span></div>
+        <div class="stat"><strong>Turn:</strong> <span id="turnText">Red</span></div>
+        <div class="stat"><strong>Winner:</strong> <span id="winnerText">None</span></div>
+      </div>
+
+      <div class="card">
+        <h3>Players</h3>
+        <div class="score-row">
+          <span>Red Player</span>
+          <strong id="playerRedStatus">waiting</strong>
+        </div>
+        <div class="score-row">
+          <span>Black Player</span>
+          <strong id="playerBlackStatus">waiting</strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Scoreboard</h3>
+        <div class="score-row">
+          <span>Red Captures</span>
+          <strong id="redCaptures">0</strong>
+        </div>
+        <div class="score-row">
+          <span>Black Captures</span>
+          <strong id="blackCaptures">0</strong>
+        </div>
+        <div class="score-row">
+          <span>Red Kings</span>
+          <strong id="redKings">0</strong>
+        </div>
+        <div class="score-row">
+          <span>Black Kings</span>
+          <strong id="blackKings">0</strong>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Controls</h3>
+        <div class="controls">
+          <button id="resetBoardBtn">Reset Game</button>
+          <button id="leaveRoomBtn" class="secondary-btn">Leave Room</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Live Updates</h3>
+        <div id="messages"></div>
+      </div>
+    </aside>
+
+    <main class="board-panel">
+      <div class="board-header">
+        <div>
+          <div class="board-title">Match Board</div>
+          <div class="board-subtitle">
+            Select your piece and play when it is your turn.
+          </div>
+        </div>
+
+        <div class="turn-badge" id="turnBadge">Current Turn: Red</div>
+      </div>
+
+      <div class="board-wrap">
+        <div class="board" id="board"></div>
+      </div>
+
+      <div class="legend">
+        <span><i class="dot dot-red"></i> Red pieces</span>
+        <span><i class="dot dot-black"></i> Black pieces</span>
+        <span><i class="dot dot-yellow"></i> Valid move</span>
+        <span><i class="dot dot-king"></i> King piece</span>
+      </div>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/script.js"></script>
+</body>
+</html>
